@@ -1,5 +1,11 @@
 @include('elements.navbar')
 <div class='container'>
+    @if (Session::has('delete'))
+        <div class="alert alert-success">
+        <span class="text-center">
+            {{Session::get('delete')}}</span>
+        </div>
+    @endif
     <table class="table table-striped table-dark" style="margin-top:100px">
         <tr>
             <th scope="col">@lang('offer.ID')</th>
@@ -20,12 +26,11 @@
                         <a href="{{route('offer_edit' , $offer->ID)}}"class="btn btn-sm alert alert-success">Edit</a>
                     </span>
                     <span>
-                        <a href="" class="btn btn-sm alert alert-danger">Delete</a>
+                        <a href="{{route('offer_delete' , $offer->ID)}}" onclick="return confirm('Are you sure?')" class="btn btn-sm alert alert-danger">Delete</a>
                     </span>
                 </td>
             </tr>
         @endforeach
-     
     </table>
 </div>
 

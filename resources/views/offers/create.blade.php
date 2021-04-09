@@ -12,8 +12,17 @@
                     </span> 
                 </div>
             @endif
-            <form action="{{route('offerstore')}}" method="post">
+            <form action="{{route('offerstore')}}" method="post" enctype="multipart/form-data">
                 @csrf
+                <div class="form-group form-group-lg row">
+                    <label class="col-sm-2 control-label" for="photoInput">@lang('offer.photo')</label>
+                    <input class="form-control col-sm-8" id="photoInput" type="file" name="photo">
+                </div>
+                @error('photo')
+                <span class='form-text text-danger offset-sm-2' >
+                    {{$message}}
+                </span>
+                @enderror
                 <div class='form-group form-group-lg row'>
                     <label class='col-sm-2 control-label' for='NameInput'>@lang('offer.Name_ar')</label>
                     <input class='form-control col-sm-8' id='NameInput' type='text' name='Name_ar' placeholder="@lang('offer.Nameplace')">

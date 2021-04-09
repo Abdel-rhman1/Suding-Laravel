@@ -65,8 +65,13 @@ Route::group(['prefix'=>'offer'] , function(){
     });
     // offer/Edit/{offer_id}
     Route::group(['prefix' => '/Edit'] , function(){
-        Route::get('/Edit/{id}' , 'CURD@edit')->name('offer_edit');
+        Route::get('/{id}' , 'CURD@edit')->name('offer_edit');
     });
+    
+    Route::group(['prefix' =>'/Delete'] , function(){
+        Route::get('/{id}' , 'CURD@delete')->name('offer_delete');
+    });
+    Route::post('/update/{id}' , 'CURD@Update')->name('offerupdate');
     Route::post('/store' , 'CURD@store')->name('offerstore');
 });
 
