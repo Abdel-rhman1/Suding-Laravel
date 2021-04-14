@@ -10,7 +10,7 @@ class CURD extends Controller
 {
     public function index(){
         // return Session()->get('locale');
-        $offers = Offer::select('ID' , 'Name_'.Session()->get('locale') .' as Name' , 'Price' , 'details_'.Session()->get('locale') . ' as details')->get();
+        $offers = Offer::select('ID' , 'photo','Name_'.Session()->get('locale') .' as Name' , 'Price' , 'details_'.Session()->get('locale') . ' as details')->get();
 
         return view('offers.all' , compact('offers'));
     }
@@ -64,7 +64,7 @@ class CURD extends Controller
         $off = Offer::find($id);
         if(!$off)
             return redirect()->back();
-        $offer  = Offer::select('ID','Name_ar' , 'Name_en' , 'Price' , 'details_ar' , 'details_en')->find($id);
+        $offer  = Offer::select('ID','Name_ar' ,'photo', 'Name_en' , 'Price' , 'details_ar' , 'details_en')->find($id);
         return view('offers.edit', compact('offer'));
     }
     public function Update(Request $request , $id){

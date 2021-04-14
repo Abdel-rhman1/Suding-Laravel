@@ -12,6 +12,7 @@
             <th scope="col">@lang('offer.Name')</th>
             <th scope="col">@lang('offer.Price')</th>
             <th scope="col">@lang('offer.Details')</th>
+            <th scope="col">@lang('offer.image')</th>
             <th scope="col">@lang('offer.controls')</th>
         </tr>
         @foreach($offers as $offer)
@@ -21,6 +22,8 @@
                 <td>{{$offer->Name}}</td>
                 <td>{{$offer->Price}}</td>
                 <td>{{$offer->details}}</td>
+                <td><img src={{asset('Images/offers/' . $offer->photo)}} class="productImage">
+                </td>
                 <td>
                     <span>
                         <a href="{{route('offer_edit' , $offer->ID)}}"class="btn btn-sm alert alert-success">Edit</a>
@@ -33,5 +36,4 @@
         @endforeach
     </table>
 </div>
-
 @include('elements.footer')

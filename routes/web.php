@@ -76,6 +76,16 @@ Route::group(['prefix'=>'offer'] , function(){
 });
 
 
+Route::group(['prefix'=>'Ajax-offer'] , function(){
+    Route::get('/create' , 'AJAXCobtroller@create')->name('offer.ajax.create');
+    Route::post('/store' , 'AJAXCobtroller@store')->name('offer.ajax.store');
+    Route::get('/index' , 'AJAXCobtroller@index');
+    Route::post('/delete' , 'AJAXCobtroller@delete')->name('offer.ajax.delete');
+    Route::get('/edit/{id}' , 'AJAXCobtroller@edit')->name('offer.ajax.edit');
+    Route::post('/update' , 'AJAXCobtroller@update')->name('offer.ajax.update');
+
+});
+
 Route::get('locale/{locale}' , function($locale){
     Session::put('locale' , $locale);
     return redirect()->back();
