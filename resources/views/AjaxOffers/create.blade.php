@@ -86,6 +86,7 @@
     <script>
         $(function () {
         $('#Save').click(function(){
+            
             $.ajax({
                 method:'post',
                 url : "{{route('offer.ajax.store')}}",

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware;
-
+use App\Models\Admin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,4 +89,14 @@ Route::group(['prefix'=>'Ajax-offer'] , function(){
 Route::get('locale/{locale}' , function($locale){
     Session::put('locale' , $locale);
     return redirect()->back();
+});
+
+
+
+Route::get('/test' , function (){
+    dd(Auth::guard('admin')->attempt(['email'=> 'yousef777906@gmail.com' , 'password'=>'01102053810']));
+});
+Route::group(['prefix'=>'admin'] , function(){
+    Route::get('/login' , 'AdminController@login')->name('admin.login');
+    Route::post('/save' , 'AdminController@save')->name('admin.save');
 });

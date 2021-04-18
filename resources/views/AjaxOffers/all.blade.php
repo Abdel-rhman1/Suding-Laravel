@@ -55,7 +55,6 @@
                             // console.log('OfferRow'+offer_id);
                             $('.removeSccess').show();
                         }else{
-
                         }
                     },
                     error:function(error , status){
